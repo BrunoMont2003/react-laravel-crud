@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.navbar {
+  height: 4rem;
+}
+.main-container {
+  min-height: calc(100vh - 4rem);
+}

@@ -1,6 +1,7 @@
+import { Layout } from '../../components/common/Layout'
 
 export const CreateProduct = () => {
   return (
-    <div>create</div>
+    <Layout>create</Layout>
   )
 }

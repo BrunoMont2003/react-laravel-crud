@@ -1,5 +1,7 @@
+import { Layout } from '../../components/common/Layout'
+
 export const ListProducts = () => {
   return (
-    <div>index</div>
+    <Layout>index</Layout>
   )
 }

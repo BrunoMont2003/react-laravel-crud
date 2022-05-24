@@ -1,5 +1,7 @@
+import { Layout } from '../../components/common/Layout'
+
 export const EditProduct = () => {
   return (
-    <div>edit</div>
+    <Layout>edit</Layout>
   )
 }
