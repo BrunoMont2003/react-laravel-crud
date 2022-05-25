@@ -15,37 +15,31 @@ export const ListProducts = () => {
   return (
     <Layout>
       <div className='container w-100'>
-        <div className='table-responsive w-100'>
-          {products.length === 0 && <p>Loading...</p>}
-          {products.length > 0 && (
-            <table className='table caption-top'>
-              <caption>List of Products</caption>
-              <thead className='table-dark'>
-                <tr>
-                  <th scope='col'>#</th>
-                  <th scope='col'>Name</th>
-                  <th scope='col'>Price</th>
-                  <th scope='col'>Description</th>
-                  <th scope='col' />
-                </tr>
-              </thead>
-              <tbody>
-                {products.map(({ name, description, price }, index) => (
-                  <tr key={index}>
-                    <td scope='row' />
-                    <td>{name}</td>
-                    <td>${price}</td>
-                    <td>{description}</td>
-                    <td className='d-flex gap-2'>
+        <h1 className='mb-3'>Products</h1>
+        {products.length === 0 && <p>Loading...</p>}
+        {products.length > 0 && (
+          <div className='row row-cols-1 row-cols-md-3 g-4'>
+            {products.map(({ name, description, price }, index) => (
+              <div className='col' key={index}>
+                <div className='card'>
+                  <div className='card-body'>
+                    <h5 className='card-title text-uppercase text-dark'>{name}</h5>
+                    <p className='card-text mb-1 text-capitalize text-se'>
+                      {description}
+                    </p>
+                    <span className='text-secondary fw-bold'>
+                      $ {price}
+                    </span>
+                    <div className='d-flex gap-2 mt-2'>
                       <button className='btn btn-primary'>EDIT</button>
                       <button className='btn btn-danger'>DELETE</button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </Layout>
   )
