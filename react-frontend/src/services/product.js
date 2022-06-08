@@ -13,3 +13,11 @@ export const getProducts = async () => {
     return null
   }
 }
+export const createProduct = async (product) => {
+  try {
+    const { data } = await axios.post(endpoint, product)
+    return data
+  } catch (error) {
+    console.log(error.message)
+  }
+}
