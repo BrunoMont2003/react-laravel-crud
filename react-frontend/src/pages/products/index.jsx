@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Layout } from '../../components/common/Layout'
 import { getProducts } from '../../services/product'
 
@@ -19,7 +20,7 @@ export const ListProducts = () => {
         {products.length === 0 && <p>Loading...</p>}
         {products.length > 0 && (
           <div className='row row-cols-1 row-cols-md-2 g-4'>
-            {products.map(({ name, description, price }, index) => (
+            {products.map(({ name, description, price, id }, index) => (
               <div className='col' key={index}>
                 <div className='card'>
                   <div className='card-body'>
@@ -31,7 +32,7 @@ export const ListProducts = () => {
                       $ {price}
                     </span>
                     <div className='d-flex gap-2 mt-2'>
-                      <button className='btn btn-primary'>EDIT</button>
+                      <Link to={`/products/edit/${id}`} className='btn btn-primary'>EDIT</Link>
                       <button className='btn btn-danger'>DELETE</button>
                     </div>
                   </div>

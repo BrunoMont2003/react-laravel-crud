@@ -1,27 +1,33 @@
 import { useState } from 'react'
-import { createProduct } from '../services/product'
+import { createProduct, updateProduct } from '../services/product'
 import { useNavigate } from 'react-router-dom'
 
-export const ProductForm = () => {
+export const ProductForm = ({ product: productToEdit }) => {
   const navigate = useNavigate()
   const [product, setProduct] = useState({
-    name: '',
-    description: '',
-    price: ''
+    name: productToEdit ? productToEdit.name : '',
+    description: productToEdit ? productToEdit.description : '',
+    price: productToEdit ? productToEdit.price : ''
   })
   const handleChange = ({ target: { name, value } }) => {
     setProduct({ ...product, [name]: value })
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await createProduct(product)
+
+    if (productToEdit) {
+      await updateProduct(product, productToEdit.id)
+    } else {
+      await createProduct(product)
+    }
+
     navigate('/products')
   }
 
   return (
     <form className='row g-3 needs-validation' noValidate onSubmit={async (e) => { await handleSubmit(e) }}>
       <div className='col-12'>
-        <h1>Create Product</h1>
+        <h1>{`${productToEdit ? 'Edit' : 'Create'} Product`}</h1>
       </div>
       <div className='col-md-6'>
         <label htmlFor='name' className='form-label'>Product Name</label>
